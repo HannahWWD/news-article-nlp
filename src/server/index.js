@@ -1,8 +1,28 @@
+let projectData = {};
+
+
+const dotenv = require('dotenv');
+dotenv.config();
+const fetch = require('node-fetch');
 var path = require('path')
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
+
+// console.log(process.env.API_KEY)
+
+
+
 
 const app = express()
+
+// dependencies
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+const cors = require('cors');
+app.use(cors());
+
+
 
 app.use(express.static('dist'))
 
@@ -14,10 +34,36 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
+app.listen(3000, function () {
+    console.log('Example app listening on port 3000!')
 })
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+app.post('/post-data',function(req,res){
+  const datafromApp = req.body;
+  const newEntry = {
+    text:datafromApp.text
+  }
+  Object.assign(projectData,newEntry)
+  console.log(projectData)
+  // you have to send something back, otherwise the promise will keep pending
+  res.send(projectData)
 })
+
+app.get('/result', getAnalysisResult)
+
+
+function getAnalysisResult(req, res) {
+  console.log("server fetch function fired!");
+  const txt = projectData.text;
+  const url = `https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&lang=en&txt=${txt}`
+  let result = {};
+  fetch(url, { method: 'POST' })
+    .then(response => response.json())
+    .then(function (data) {
+      Object.assign(result, data)
+      console.log(result)
+      res.send(result);
+    })
+    .catch(error => { console.error("error is:", error) });
+  
+}
