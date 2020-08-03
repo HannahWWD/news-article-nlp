@@ -18,7 +18,7 @@ You will need to obtain an API KEY from MeaningCloud.
 API_KEY = e454r57t********
 ```
 
-**Note: For you convenience, a valid API key is included in the  `.env.example` file.**
+**Note: For you convenience, a valid API key is included in the  `env.example` file. (Use editor to open it)**
 
 - type in following commands in your terminal to build the project
 
