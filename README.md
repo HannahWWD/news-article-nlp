@@ -1,26 +1,35 @@
-# Evaluate a news article with NLP
+# Evaluate A News Article with NLP
 
-by Hannah Wu
+A responsive web app that automatically generates sentiment analysis results for news articles through a Natural Language Processing API.
 
-Since the Aylien API has been stopped working, I am using the MeaningCloud API to fulfill the requirements. However, the MeaningCloud API only works with http/ftp URLs, which are rarely found nowadays, especially for official new websites. In order to make it more user-friendly, **the App will only accept text inputs, instead of URL addresses, to make the requests**.
+Features: current version is eligible to detect plain text input and produces attitude summaries regarding to agreement, subjectivity, irony, and confidence levels.
 
-## Getting started
+ _the App will only accept text inputs, instead of URL addresses, to make the requests._
 
-This instruction is for general access from GitHub.
 
-**IMPORTANT** 
-You will need to obtain an API KEY from MeaningCloud. 
+## Getting Started
+
+### Install Node.js
+
+Before you start, you will need to install [Node.js](https://nodejs.org/en/) on your computer.
+
+### Get Your Own API Key
+
+Obtain an API KEY from MeaningCloud. 
 (https://www.meaningcloud.com/developer/getting-started)
 
-- create a `.env` file in the root of the directory and fill:
+Then, create a `.env` file in the root of the directory and fill :
 
 ```
 API_KEY = e454r57t********
 ```
 
-**Note: For you convenience, a valid API key is included in the  `env.example` file. (Use editor to open it)**
+_Note: You can find an example in `env.example`._
 
-- type in following commands in your terminal to build the project
+
+### Install App
+
+Type in following commands in your terminal to build the project:
 
 ```
 npm install
@@ -28,16 +37,21 @@ npm run build-prod
 npm run start 
 ```
 
-In this step the App should work properly at port 3000.
+**In this step the App should work properly at port 3000.**
 
-- To run Jest tests, use `npm run test` .
+### Test
 
-- To use development mode, run `npm run build-dev`. Website will automatically open in your browser. At the same time, run `npm run start` to open the local server.
+To run Jest tests, use `npm run test` .
+
+### Development Mode
+
+To use development mode, run `npm run build-dev`. Website will automatically open in your default browser. At the same time, run `npm run start` to open the local server.
 
 
 ## App Usage
 
 - Paste the article into the textarea.
+
 - Submit the article and you can get the analysis results on the right. It might take a few seconds depends on the length of the article.
 
 ### Notes for Usage
@@ -61,15 +75,9 @@ Zuckerberg responded that Facebook “used to have a policy that restricted comp
 Demings said Zuckerberg’s reply seemed to indicate that Facebook is willing to use its platform policies to discriminate against and undermine competitors.
 
 
+## License
 
-## inputChecker.js
-
-Please note that this function is to check if the text input:
-
-- is empty
-- is written in English
-- is *NOT* an URL address
-
+This app is a free software, and may be redistributed under the terms specified in the [LICENSE](LICENSE) file.
 
 
 
